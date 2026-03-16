@@ -1605,7 +1605,7 @@ class ModC(commands.Cog):
             ,
             color=discord.Color.blurple()
         )
-        embed.set_footer(text=f"You can .close your post with that command.")
+        embed.set_footer(text="You can use !close to close your post.")
 
         await thread.send(f"{thread.owner.mention}", embed=embed)
 
