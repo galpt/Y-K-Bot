@@ -11,11 +11,10 @@ class AniListCog(commands.Cog):
         self.bot = bot
 
     def search_anilist(self, name, media_type):
-
         query = """
         query ($search: String!, $type: MediaType) {
-          Page(page: 1, perPage: 1) {
-            media(search: $search, type: $type) {
+          Page(page: 1, perPage: 10) {
+            media(search: $search, type: $type, sort: POPULARITY_DESC) {
               id
               siteUrl
               title { romaji english native }
@@ -80,9 +79,7 @@ class AniListCog(commands.Cog):
             "start_date": start_date
         }
 
-
     def clean_description(self, text):
-
         if not text:
             return "No description available."
 
@@ -92,10 +89,7 @@ class AniListCog(commands.Cog):
 
         return text.strip()
 
-
-
     def truncate_description(self, text, url, max_words=45):
-
         words = text.split()
 
         if len(words) <= max_words:
@@ -105,13 +99,10 @@ class AniListCog(commands.Cog):
 
         return f"{short}... [(more)]({url})"
 
-
-
     @slash_command(name="search", description="Search Anime or Manga on AniList")
     async def search(
         self,
         ctx: discord.ApplicationContext,
-
         media_type: Option(
             str,
             "Choose type",
@@ -120,9 +111,7 @@ class AniListCog(commands.Cog):
                 OptionChoice("Manga", "MANGA")
             ]
         ),
-
         title: Option(str, "Anime or Manga name"),
-
     ):
 
         await ctx.defer()
@@ -133,8 +122,6 @@ class AniListCog(commands.Cog):
             await ctx.respond("No results found.")
             return
 
-
-
         if media["start_date"]:
             try:
                 dt = datetime.strptime(media["start_date"], "%Y-%m-%d")
@@ -144,20 +131,13 @@ class AniListCog(commands.Cog):
         else:
             date_text = "Unknown"
 
-
-
         desc = self.clean_description(media["desc"])
         desc = self.truncate_description(desc, media["url"], 45)
 
-
         genres = ", ".join(media["genres"]) if media["genres"] else "Unknown"
-
-
 
         color_hex = media["color"] or "#2f3136"
         color = int(color_hex.lstrip("#"), 16)
-
-
 
         embed = discord.Embed(
             title=media["title"],
@@ -172,7 +152,6 @@ class AniListCog(commands.Cog):
             text=f"AniList • {media['format']} • {date_text}",
             icon_url="https://anilist.co/img/logo_al.png"
         )
-
 
         await ctx.respond(embed=embed)
 
