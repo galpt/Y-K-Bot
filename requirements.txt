@@ -1,0 +1,5 @@
+py-cord==2.7.1
+python-dotenv
+aiohttp
+aiosqlite
+requests
