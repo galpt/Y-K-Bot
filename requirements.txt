@@ -4,3 +4,4 @@ aiohttp
 aiosqlite
 requests
 psutil
+python=3.13
