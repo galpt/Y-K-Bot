@@ -12,7 +12,7 @@ bot = commands.Bot(
     debug_guilds=[int(guild) for guild in os.getenv("GUILDS", "").split(",") if guild.strip()],
     sync_commands=True,
     owner_ids=[int(user) for user in os.getenv("OWNER", "").split(",") if user.strip()],
-    command_prefix=".",
+    command_prefix="!",
     help_command=None
 )
 
