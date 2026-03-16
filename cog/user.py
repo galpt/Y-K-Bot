@@ -137,7 +137,7 @@ def gather_commands_recursive(cmd, prefix=""):
 
 
 
-class Help(commands.Cog):
+class User(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.MAX_FIELDS_PER_EMBED = 20
@@ -382,4 +382,4 @@ class Help(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(Help(bot))
+    bot.add_cog(User(bot))
