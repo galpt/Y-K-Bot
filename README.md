@@ -27,6 +27,6 @@ The runtime entrypoint stays in `main.py`, while the implementation now lives in
 ```
 
 > [!NOTE]
-> - The moderation database now creates the `Data/` directory automatically.
 > - Forum and role settings are read safely from `.env` through the shared config loader.
-> - The `cog/` files are intentionally small so owner reload commands still work against the modular internal package.
+> - Don`t forget to install the package from the requirements.txt.
+> - As well the right Data in `.env`.
