@@ -20,9 +20,14 @@ If you already created `.venv` with another Python version, remove it and recrea
 The runtime entrypoint stays in `main.py`, while the implementation now lives in a modular internal package:
 
 ```text
-.
-├── cog/                   
-├── main.py
+├── cog/
+│   ├── anilist          # Search for Anime / Manga from the Anilist list through the API search
+│   ├── errorhandler     # Automatic handler for slash / normal commands as well on_global_error by unexpected errors goes into a seperate server which you can configurate it in the .env for the webhook
+│   ├── games            # Rock-Paper-Scissors & TicTacToe game, both with random generated Moves
+│   ├── mod              # Only moderation for Threads (Support stuff)
+│   ├── owner            # cog commands and owner
+│   └── user             # at the moment only a info bot stat command
+├── main.py          
 └── requirements.txt
 ```
 
