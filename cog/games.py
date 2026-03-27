@@ -1,8 +1,5 @@
-import asyncio
-import discord
-from discord.ext import commands
-import sqlite3
-import random
+from utils.imports import *
+
 
 DB_PATH = "Data/games.db"
 CHOICES = ["Scissors", "Rock", "Paper"]
@@ -509,14 +506,14 @@ class TicTacToeView(discord.ui.View):
             get_corner_strategy,
             get_edge_strategy,
             get_best_position,
-            random_move  
+            random_move
         ]
 
         if self.size == 5:
             strategies = [
                 check_immediate_win,
                 check_block_player,
-                get_center_control,  
+                get_center_control,
                 check_fork_opportunities,
                 check_block_fork,
                 check_multi_threat,
