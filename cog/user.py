@@ -1,12 +1,5 @@
-import discord
-from discord.ext import commands
-from discord.commands import slash_command, SlashCommandGroup
-from discord.ui import View, Button, Select
-from discord.utils import format_dt
-from datetime import datetime, timezone, timedelta
-import psutil
-import platform
-import time
+from utils.imports import *
+
 
 ansi_blue = "\u001b[2;34m"
 ansi_reset = "\u001b[0m"
@@ -379,6 +372,11 @@ class User(commands.Cog):
                 new_index += 1
 
         return final_embeds, final_page_info
+
+
+
+    # ---------------------------------------
+
 
 
 def setup(bot):
