@@ -1,18 +1,6 @@
-import discord
-from discord.ext import commands
-from discord.commands import SlashCommandGroup, Option
+from utils.imports import *
 
-from dotenv import load_dotenv
-import os
-import re
-
-load_dotenv()
-
-FORUM_ID = int(os.getenv("FORUM_ID"))
-
-MOD_ROLE_IDS = [int(x) for x in os.getenv("MOD_ROLE_IDS", "").split(",") if x]
-ADMIN_ROLE_IDS = [int(x) for x in os.getenv("ADMIN_ROLE_IDS", "").split(",") if x]
-GUILD_IDS = [int(x) for x in os.getenv("GUILDS", "").split(",") if x]
+GUILD_IDS = GUILDS
 
 
 async def check_permissions(ctx: discord.ApplicationContext):
